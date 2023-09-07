@@ -22,19 +22,19 @@ df = pd.read_csv('CDNOW_master.txt', names=['customer_id', 'date', 'quantity', '
 df.date = df.date.astype(str)
 df.date= pd.to_datetime(df.date, infer_datetime_format=True)
 
-### markdown: right
-from pathlib import Path
-def img_to_bytes(img_path):
-    img_bytes = Path(img_path).read_bytes()
-    encoded = base64.b64encode(img_bytes).decode()
-    return encoded
-def img_to_html(img_path, width, height):
-    img_html = "<img src='data:image/png;base64, {}' class='img-fluid' width='{}' height='{}'>".format(
-        img_to_bytes(img_path), width, height
-    )
-    return img_html
+# ### markdown: right
+# from pathlib import Path
+# def img_to_bytes(img_path):
+#     img_bytes = Path(img_path).read_bytes()
+#     encoded = base64.b64encode(img_bytes).decode()
+#     return encoded
+# def img_to_html(img_path, width, height):
+#     img_html = "<img src='data:image/png;base64, {}' class='img-fluid' width='{}' height='{}'>".format(
+#         img_to_bytes(img_path), width, height
+#     )
+#     return img_html
 
-st.markdown("<p style='text-align: center; color: grey;'>"+img_to_html('images/CapstoreProject.png', 700, 350)+"</p>", unsafe_allow_html=True)
+# st.markdown("<p style='text-align: center; color: grey;'>"+img_to_html('images/CapstoreProject.png', 700, 350)+"</p>", unsafe_allow_html=True)
 #----------------------------------------------------------------------------------------------------------------------------------#
 
 # Tạo cột bên trái cho menu
