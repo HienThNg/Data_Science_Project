@@ -1124,7 +1124,7 @@ Trong phạm vi giới hạn thời gian nên tạm thời chúng ta tạm dừn
             if st.button("Add Row"):
                 if Recency and Frequency and Monetary > 0:
                     # Append the entered data to the DataFrame
-                    st.session_state.data = st.session_state.data.append({"Recency": Recency, "Frequency": Frequency, "Monetary": Monetary}, ignore_index=True)
+                    st.session_state.data = st.session_state.data._append({"Recency": Recency, "Frequency": Frequency, "Monetary": Monetary}, ignore_index=True)
                     st.success("Row added successfully!")
 
             # # Create a button to convert the DataFrame to a CSV file
