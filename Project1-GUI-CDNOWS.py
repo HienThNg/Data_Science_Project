@@ -654,7 +654,7 @@ Trong phạm vi giới hạn thời gian nên tạm thời chúng ta tạm dừn
             st.write('**Dựa theo biểu đồ Dendrogram, chọn số lượng cluster là 5**')
             
             # Fit the model
-            from sklearn.cluster import AgglomerativeClustering
+            # from sklearn.cluster import AgglomerativeClustering
             
             # Giả sử X là dữ liệu của bạn và num_clusters là số lượng cụm bạn muốn tạo
             # Z = linkage(df_scaled[['Recency','Frequency','Monetary']], method='ward', metric="euclidean")
@@ -667,7 +667,20 @@ Trong phạm vi giới hạn thời gian nên tạm thời chúng ta tạm dừn
             sil_dend =  Image.open('sil-hier.png')
             st.image(sil_dend)
 
-            st.write('**Khi áp dụng AgglomerativeClustering fit model, Streamlit App bị lỗi connection**')
+            hier_1 =  Image.open('hier_1.png')
+            st.image(hier_1)            
+
+            hier_2 =  Image.open('hier_2.png')
+            st.image(hier_2)
+
+            hier_3 =  Image.open('hier_3.png')
+            st.image(hier_3)
+
+            hier_4 =  Image.open('hier_4.png')
+            st.image(hier_4)
+        
+
+            # st.write('**Khi áp dụng AgglomerativeClustering fit model, Streamlit App bị lỗi connection**')
             
 #             start_time = datetime.now()
 
