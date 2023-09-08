@@ -657,12 +657,16 @@ Trong phạm vi giới hạn thời gian nên tạm thời chúng ta tạm dừn
             from sklearn.cluster import AgglomerativeClustering
             
             # Giả sử X là dữ liệu của bạn và num_clusters là số lượng cụm bạn muốn tạo
-            Z = linkage(df_scaled[['Recency','Frequency','Monetary']], method='ward', metric="euclidean")
-            cluster_labels = fcluster(Z, 5, criterion='maxclust')
+            # Z = linkage(df_scaled[['Recency','Frequency','Monetary']], method='ward', metric="euclidean")
+            # cluster_labels = fcluster(Z, 5, criterion='maxclust')
 
-            # Tính toán Silhouette Score
-            silhouette_avg = silhouette_score(df_scaled[['Recency','Frequency','Monetary']], cluster_labels)
-            st.write("For n_clusters =", 5, "The average silhouette_score is :", silhouette_avg)
+            # # Tính toán Silhouette Score
+            # silhouette_avg = silhouette_score(df_scaled[['Recency','Frequency','Monetary']], cluster_labels)
+            # st.write("For n_clusters =", 5, "The average silhouette_score is :", silhouette_avg)
+            
+            sil_dend =  Image.open('sil-hier.png')
+            st.image(sil_dend)
+            
             
             start_time = datetime.now()
 
