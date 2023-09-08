@@ -1106,8 +1106,8 @@ Trong phạm vi giới hạn thời gian nên tạm thời chúng ta tạm dừn
             # Upload file
             uploaded_file_1 = st.file_uploader("Choose a file", type=['txt', 'csv'])
             if uploaded_file_1 is not None:
-                data_df = pd.read_csv(uploaded_file_1, header=None)
-                st.dataframe(data_df)
+                data_df = pd.read_csv(uploaded_file_1, names=["Recency", "Frequency", "Monetary"])
+                
                 flag = True     
             else:
                 st.write('New data has not uploaded yet!')  
