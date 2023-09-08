@@ -666,74 +666,75 @@ Trong phạm vi giới hạn thời gian nên tạm thời chúng ta tạm dừn
             
             sil_dend =  Image.open('sil-hier.png')
             st.image(sil_dend)
-            
-            
-            start_time = datetime.now()
 
-            hierarchical_cluster = AgglomerativeClustering(n_clusters= 5, affinity='euclidean', linkage='ward')
-            hierarchical_cluster.fit(df_scaled[['Recency','Frequency','Monetary']])
+            st.write('**Khi áp dụng AgglomerativeClustering fit model, Streamlit App bị lỗi connection**')
+            
+#             start_time = datetime.now()
 
-            run_time = datetime.now() - start_time
-            st.code('Total run time : ' + str(run_time))
+#             hierarchical_cluster = AgglomerativeClustering(n_clusters= 5, affinity='euclidean', linkage='ward')
+#             hierarchical_cluster.fit(df_scaled[['Recency','Frequency','Monetary']])
+
+#             run_time = datetime.now() - start_time
+#             st.code('Total run time : ' + str(run_time))
             
             
-            df_now['Hier_Cluster'] = hierarchical_cluster.labels_
+#             df_now['Hier_Cluster'] = hierarchical_cluster.labels_
             
-            df_now.groupby('Hier_Cluster').agg({
-                    'Recency':'mean',
-                    'Frequency':'mean',
-                    'Monetary':['mean', 'count']}).round(2)
+#             df_now.groupby('Hier_Cluster').agg({
+#                     'Recency':'mean',
+#                     'Frequency':'mean',
+#                     'Monetary':['mean', 'count']}).round(2)
             
-            # Calculate average values for each RFM_Level, and return a size of each segment
-            rfm_agg3 = df_now.groupby('Hier_Cluster').agg({
-                'Recency': 'mean',
-                'Frequency': 'mean',
-                'Monetary': ['mean', 'count']}).round(0)
+#             # Calculate average values for each RFM_Level, and return a size of each segment
+#             rfm_agg3 = df_now.groupby('Hier_Cluster').agg({
+#                 'Recency': 'mean',
+#                 'Frequency': 'mean',
+#                 'Monetary': ['mean', 'count']}).round(0)
 
-            rfm_agg3.columns = rfm_agg3.columns.droplevel()
-            rfm_agg3.columns = ['RecencyMean','FrequencyMean','MonetaryMean', 'Count']
-            rfm_agg3['Percent'] = round((rfm_agg3['Count']/rfm_agg3.Count.sum())*100, 2)
+#             rfm_agg3.columns = rfm_agg3.columns.droplevel()
+#             rfm_agg3.columns = ['RecencyMean','FrequencyMean','MonetaryMean', 'Count']
+#             rfm_agg3['Percent'] = round((rfm_agg3['Count']/rfm_agg3.Count.sum())*100, 2)
 
-            # Reset the index
-            rfm_agg3 = rfm_agg3.reset_index()
+#             # Reset the index
+#             rfm_agg3 = rfm_agg3.reset_index()
 
-            # Change thr Cluster Columns Datatype into discrete values
-            rfm_agg3['Hier_Cluster'] = 'Hier_Cluster '+ rfm_agg3['Hier_Cluster'].astype('str')
+#             # Change thr Cluster Columns Datatype into discrete values
+#             rfm_agg3['Hier_Cluster'] = 'Hier_Cluster '+ rfm_agg3['Hier_Cluster'].astype('str')
             
-            st.dataframe(rfm_agg3)
+#             st.dataframe(rfm_agg3)
             
-            #Create our plot and resize it.
-            fig1 = plt.gcf()
-            ax = fig1.add_subplot()
-            fig1.set_size_inches(14, 10)
+#             #Create our plot and resize it.
+#             fig1 = plt.gcf()
+#             ax = fig1.add_subplot()
+#             fig1.set_size_inches(14, 10)
 
-            colors_dict2 = {'Cluster0':'yellow','Cluster1':'royalblue', 'Cluster2':'cyan',
-                        'Cluster3':'red', 'Cluster4':'purple', 'Cluster5':'green', 'Cluster6':'gold'}
+#             colors_dict2 = {'Cluster0':'yellow','Cluster1':'royalblue', 'Cluster2':'cyan',
+#                         'Cluster3':'red', 'Cluster4':'purple', 'Cluster5':'green', 'Cluster6':'gold'}
 
-            squarify.plot(sizes=rfm_agg3['Count'],
-                        text_kwargs={'fontsize':12,'weight':'bold', 'fontname':"sans serif"},
-                        color=colors_dict2.values(),
-                        label=['{} \n{:.0f} days \n{:.0f} orders \n{:.0f} $ \n{:.0f} customers ({}%)'.format(*rfm_agg3.iloc[i])
-                                for i in range(0, len(rfm_agg3))], alpha=0.5 )
+#             squarify.plot(sizes=rfm_agg3['Count'],
+#                         text_kwargs={'fontsize':12,'weight':'bold', 'fontname':"sans serif"},
+#                         color=colors_dict2.values(),
+#                         label=['{} \n{:.0f} days \n{:.0f} orders \n{:.0f} $ \n{:.0f} customers ({}%)'.format(*rfm_agg3.iloc[i])
+#                                 for i in range(0, len(rfm_agg3))], alpha=0.5 )
 
 
-            plt.title("Customers Segments",fontsize=26,fontweight="bold")
-            plt.axis('off')
+#             plt.title("Customers Segments",fontsize=26,fontweight="bold")
+#             plt.axis('off')
             
-            st.pyplot(fig1)
+#             st.pyplot(fig1)
             
-            fig2 = px.scatter(rfm_agg3, x="RecencyMean", y="MonetaryMean", size="FrequencyMean", color="Hier_Cluster",
-                        hover_name="Hier_Cluster", size_max=100)
+#             fig2 = px.scatter(rfm_agg3, x="RecencyMean", y="MonetaryMean", size="FrequencyMean", color="Hier_Cluster",
+#                         hover_name="Hier_Cluster", size_max=100)
             
-            st.plotly_chart(fig2)
+#             st.plotly_chart(fig2)
 
-            st.write('**Số lượng của các cụm**')
+#             st.write('**Số lượng của các cụm**')
 
-            st.code(df_now['Hier_Cluster'].value_counts())     
+#             st.code(df_now['Hier_Cluster'].value_counts())     
             
-            st.write('''**Nhận xét:**
-* Số lượng giữa các cụm có sự chênh lệch lớn 
-* Phần lớn số lượng khách hàng có tỷ lệ 80.93% và thấp nhất có tỷ lệ 0.01% ''')     
+#             st.write('''**Nhận xét:**
+# * Số lượng giữa các cụm có sự chênh lệch lớn 
+# * Phần lớn số lượng khách hàng có tỷ lệ 80.93% và thấp nhất có tỷ lệ 0.01% ''')     
             
         elif model == 'RFM + K-means (Big Data)':
             # RFM
