@@ -666,7 +666,7 @@ Trong phạm vi giới hạn thời gian nên tạm thời chúng ta tạm dừn
             
             start_time = datetime.now()
 
-            hierarchical_cluster = AgglomerativeClustering(n_clusters= 6, affinity='euclidean', linkage='ward')
+            hierarchical_cluster = AgglomerativeClustering(n_clusters= 5, affinity='euclidean', linkage='ward')
             hierarchical_cluster.fit(df_scaled[['Recency','Frequency','Monetary']])
 
             run_time = datetime.now() - start_time
