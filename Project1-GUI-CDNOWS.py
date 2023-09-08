@@ -638,7 +638,7 @@ Trong phạm vi giới hạn thời gian nên tạm thời chúng ta tạm dừn
             st.dataframe(df_scaled.head())     
             
             # Calculate the distance between each sample
-            Z = linkage(df_scaled[['Recency','Frequency','Monetary']],'ward')  
+            # Z = linkage(df_scaled[['Recency','Frequency','Monetary']],'ward')  
             
             # visualize the dendrogram
             st.write('Dendrogram')
