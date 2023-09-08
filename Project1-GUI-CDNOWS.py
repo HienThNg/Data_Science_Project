@@ -1100,7 +1100,7 @@ Trong phạm vi giới hạn thời gian nên tạm thời chúng ta tạm dừn
         st.header('Clustering new data')
 
         st.subheader("Select data")
-        flag = True
+        flag = False
         type = st.radio("Upload data or Input data?", options=("Upload", "Input"))
         if type=="Upload":
             # Upload file
