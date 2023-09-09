@@ -58,7 +58,7 @@ if project_num == 1:
     # Xử lý sự kiện khi người dùng lựa chọn từng mục trong danh sách và hiển thị hình ảnh tương ứng
     if step == 'Business Understanding':
 
-        image2 = st.image('a1.jpg')
+        image2 = st.image('CapstoreProject.png')
 
         st.markdown('### Tổng quan vấn đề:')
 
